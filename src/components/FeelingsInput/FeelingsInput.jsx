@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 function FeelingsInput() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [feelingsInput, setFeelingsInput] = useState(0);
+  const [feelingsInput, setFeelingsInput] = useState('');
 
   const handleInput = (e) => {
     setFeelingsInput(e.target.value);

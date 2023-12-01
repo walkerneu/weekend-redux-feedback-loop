@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 function UnderstandingInput() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [understandingInput, setUnderstandingInput] = useState(0);
+  const [understandingInput, setUnderstandingInput] = useState('');
 
   const handleInput = (e) => {
     setUnderstandingInput(e.target.value);
@@ -21,6 +21,9 @@ function UnderstandingInput() {
       history.push("/support");
     }
   };
+  const goBack = () => {
+    history.push('/')
+  }
 
   return (
     <div>
@@ -35,6 +38,9 @@ function UnderstandingInput() {
       />
       <button onClick={submitUnderstanding} data-testid="next">
         NEXT
+      </button>
+      <button onClick={goBack}>
+        GO BACK
       </button>
     </div>
   );

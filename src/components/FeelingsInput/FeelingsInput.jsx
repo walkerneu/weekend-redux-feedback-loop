@@ -1,42 +1,43 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-function FeelingsInput(){
+function FeelingsInput() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [feelingsInput, setFeelingsInput] = useState(0);
 
-    const dispatch = useDispatch()
-    const [feelingsInput, setFeelingsInput] = useState(0);
-
-    const handleInput = (e) => {
-        setFeelingsInput(e.target.value)
+  const handleInput = (e) => {
+    setFeelingsInput(e.target.value);
+  };
+  const submitFeeling = () => {
+    if (feelingsInput > 5 || feelingsInput < 1) {
+      alert("You need to enter a number between 1 and 5!");
+    } else {
+      dispatch({
+        type: "SET_FEELINGS",
+        payload: feelingsInput,
+      });
+      history.push("/understanding");
     }
-    const submitFeeling = () => {
-        dispatch({
-            type: "SET_FEELINGS",
-            payload: feelingsInput
-          })
-    }
+  };
 
-    return (
-        <div>
-            <h2>How are you feeling today?</h2>
-            <h3>On a scale of 1 to 5</h3>
-            <input 
-                type="number"
-                placeholder="Feeling?"
-                value={feelingsInput}
-                onChange={handleInput}
-                data-testid="input"/>
-            <Router>
-                <Link to='/understanding'>
-                    <button 
-                    onClick={submitFeeling}
-                    data-testid="next">
-                        NEXT</button>
-                </Link>
-            </Router>
-        </div>
-    )
+  return (
+    <div>
+      <h2>How are you feeling today?</h2>
+      <h3>On a scale of 1 to 5</h3>
+      <input
+        type="number"
+        placeholder="Feeling?"
+        value={feelingsInput}
+        onChange={handleInput}
+        data-testid="input"
+      />
+      <button onClick={submitFeeling} data-testid="next">
+        NEXT
+      </button>
+    </div>
+  );
 }
 
 export default FeelingsInput;

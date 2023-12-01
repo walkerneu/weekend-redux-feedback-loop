@@ -8,6 +8,7 @@ import FeelingsInput from '../FeelingsInput/FeelingsInput';
 import UnderstandingInput from '../UnderstandingInput/UnderstandingInput';
 import SupportInput from '../SupportInput/SupportInput';
 import CommentsInput from '../CommentsInput/CommentsInput';
+import SubmitPage from '../SubmitPage/SubmitPage';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route exact path='/comments'>
           <CommentsInput />
+        </Route>
+        <Route exact path='/submit'>
+          <SubmitPage />
         </Route>
       </Router>
     </div>

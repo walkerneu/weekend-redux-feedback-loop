@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import FeelingsInput from '../FeelingsInput/FeelingsInput';
 import UnderstandingInput from '../UnderstandingInput/UnderstandingInput';
 import SupportInput from '../SupportInput/SupportInput';
+import CommentsInput from '../CommentsInput/CommentsInput';
 
 function App() {
 
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route exact path='/support'>
           <SupportInput />
+        </Route>
+        <Route exact path='/comments'>
+          <CommentsInput />
         </Route>
       </Router>
     </div>

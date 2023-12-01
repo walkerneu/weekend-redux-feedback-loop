@@ -37,7 +37,10 @@ function SubmitPage(){
                 <p>Comments: {comments}</p>
             <Router>
                 <Link to='/success'>
-                    <button onClick={submitFeedback}>SUBMIT</button>
+                    <button 
+                    onClick={submitFeedback}
+                    data-testid="next">
+                        SUBMIT</button>
                 </Link> 
             </Router>
         </div>

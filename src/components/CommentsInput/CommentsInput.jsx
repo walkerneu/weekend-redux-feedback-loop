@@ -25,10 +25,14 @@ function CommentsInput(){
                 type="text"
                 placeholder="Comment?"
                 value={commentsInput}
-                onChange={handleInput}/>
+                onChange={handleInput}
+                data-testid="input"/>
             <Router>
                 <Link to='/submit'>
-                    <button onClick={submitComments}>NEXT</button>
+                    <button 
+                    onClick={submitComments}
+                    data-testid="next">
+                        NEXT</button>
                 </Link>
             </Router>
         </div>

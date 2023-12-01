@@ -25,10 +25,14 @@ function UnderstandingInput(){
                 type="number"
                 placeholder="Understanding?"
                 value={understandingInput}
-                onChange={handleInput}/>
+                onChange={handleInput}
+                data-testid="input"/>
             <Router>
                 <Link to='/support'>
-                    <button onClick={submitUnderstanding}>NEXT</button>
+                    <button 
+                    onClick={submitUnderstanding}
+                    data-testid="next">
+                        NEXT</button>
                 </Link>
             </Router>
         </div>

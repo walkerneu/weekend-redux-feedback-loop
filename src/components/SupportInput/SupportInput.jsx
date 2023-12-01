@@ -25,10 +25,14 @@ function SupportInput(){
                 type="number"
                 placeholder="Support?"
                 value={supportInput}
-                onChange={handleInput}/>
+                onChange={handleInput}
+                data-testid="input"/>
             <Router>
                 <Link to='/comments'>
-                    <button onClick={submitSupport}>NEXT</button>
+                    <button 
+                    onClick={submitSupport}
+                    data-testid="next">
+                        NEXT</button>
                 </Link>
             </Router>
         </div>

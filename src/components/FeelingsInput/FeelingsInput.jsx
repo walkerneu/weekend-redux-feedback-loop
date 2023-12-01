@@ -25,10 +25,14 @@ function FeelingsInput(){
                 type="number"
                 placeholder="Feeling?"
                 value={feelingsInput}
-                onChange={handleInput}/>
+                onChange={handleInput}
+                data-testid="input"/>
             <Router>
                 <Link to='/understanding'>
-                    <button onClick={submitFeeling}>NEXT</button>
+                    <button 
+                    onClick={submitFeeling}
+                    data-testid="next">
+                        NEXT</button>
                 </Link>
             </Router>
         </div>

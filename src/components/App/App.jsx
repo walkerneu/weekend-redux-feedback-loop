@@ -9,6 +9,7 @@ import UnderstandingInput from '../UnderstandingInput/UnderstandingInput';
 import SupportInput from '../SupportInput/SupportInput';
 import CommentsInput from '../CommentsInput/CommentsInput';
 import SubmitPage from '../SubmitPage/SubmitPage';
+import SuccessPage from '../SuccessPage/SuccessPage';
 
 function App() {
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route exact path='/submit'>
           <SubmitPage />
+        </Route>
+        <Route exact path='/success'>
+          <SuccessPage />
         </Route>
       </Router>
     </div>

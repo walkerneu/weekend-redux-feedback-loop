@@ -10,6 +10,7 @@ import SupportInput from '../SupportInput/SupportInput';
 import CommentsInput from '../CommentsInput/CommentsInput';
 import SubmitPage from '../SubmitPage/SubmitPage';
 import SuccessPage from '../SuccessPage/SuccessPage';
+import AdminPage from '../AdminPage/AdminPage';
 
 function App() {
 
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route exact path='/success'>
           <SuccessPage />
+        </Route>
+        <Route exact path='/admin'>
+          <AdminPage />
         </Route>
       </Router>
     </div>

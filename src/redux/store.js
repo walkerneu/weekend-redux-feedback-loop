@@ -37,10 +37,16 @@ const comments = (state = '', action) => {
   }
   return state;
 };
+const allFeedback = (state = [], action) => {
+    if (action.type === "STORE_ALL_FEEDBACK"){
+        return action.payload;
+    }
+    return state;
+}
 
 const store = createStore(
   combineReducers({
-    feelings, understanding, support, comments
+    feelings, understanding, support, comments, allFeedback
   }),
   applyMiddleware(logger),
 );

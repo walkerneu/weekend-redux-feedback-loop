@@ -6,7 +6,6 @@ import { useState } from "react";
 function AdminPage() {
   const allFeedback = useSelector((store) => store.allFeedback);
   const dispatch = useDispatch();
-  const [flagReviewId, setFlagReviewId] = useState([])
 
   const getAllFeedback = () => {
     axios({
@@ -42,7 +41,15 @@ function AdminPage() {
   }
 
   const flagForReview = (incId) => {
-    setFlagReviewId(incId)
+    axios({
+        method: 'PUT',
+        url: `/feedback/${incId}`
+      }).then(function (response) {
+        getAllFeedback();
+    
+      }).catch(function (error) {
+        console.log('error in PUT, my dood', error);
+      });
   }
 
   return (
@@ -65,8 +72,10 @@ function AdminPage() {
         <tbody>
           {allFeedback.map((feedback) => (
             <tr key={feedback.id}
-                className={flagReview ? "review-flag" : ""}>
-              <td><button className="flag-button" onClick={flagForReview}>🏳️</button></td>
+                className={ feedback.flagged ? "review-flag" : ""}>
+              <td><button 
+                className="flag-button" 
+                onClick={() => flagForReview(feedback.id)}>🏳️</button></td>
               <td>{new Date(feedback.date).toDateString("en-us")}</td>
               <td>{feedback.feeling}</td>
               <td>{feedback.understanding}</td>

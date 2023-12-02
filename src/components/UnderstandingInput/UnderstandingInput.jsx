@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function UnderstandingInput() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [understandingInput, setUnderstandingInput] = useState('');
+  const understanding = useSelector(store => store.understanding);
+  const [understandingInput, setUnderstandingInput] = useState(understanding);
 
   const handleInput = (e) => {
     setUnderstandingInput(e.target.value);

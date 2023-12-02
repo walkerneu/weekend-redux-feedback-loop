@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function FeelingsInput() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [feelingsInput, setFeelingsInput] = useState('');
+  const feelings = useSelector(store => store.feelings)
+  const [feelingsInput, setFeelingsInput] = useState(feelings);
 
   const handleInput = (e) => {
     setFeelingsInput(e.target.value);

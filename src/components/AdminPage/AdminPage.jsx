@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 function AdminPage() {
   const allFeedback = useSelector((store) => store.allFeedback);
   const dispatch = useDispatch();
+  const [flagReviewId, setFlagReviewId] = useState([])
+
   const getAllFeedback = () => {
     axios({
       method: "GET",
@@ -21,9 +24,11 @@ function AdminPage() {
         console.log("error on GET St.!! Am i right??", error);
       });
   };
+
   useEffect(() => {
     getAllFeedback();
   }, []);
+
   const deleteFeedback = (incId) => {
     axios({
         method: 'DELETE',
@@ -36,11 +41,19 @@ function AdminPage() {
       });
   }
 
+  const flagForReview = (incId) => {
+    setFlagReviewId(incId)
+  }
+
   return (
     <div>
+        <h2>Feedback Results!</h2>
+        <h3>Secret Admin Page! Woah!</h3>
+        <div className="admin-box">
       <table>
         <thead>
           <tr>
+            <th>Flag for Review</th>
             <th>Date Added</th>
             <th>Feeling</th>
             <th>Understanding</th>
@@ -51,7 +64,9 @@ function AdminPage() {
         </thead>
         <tbody>
           {allFeedback.map((feedback) => (
-            <tr key={feedback.id}>
+            <tr key={feedback.id}
+                className={flagReview ? "review-flag" : ""}>
+              <td><button className="flag-button" onClick={flagForReview}>🏳️</button></td>
               <td>{new Date(feedback.date).toDateString("en-us")}</td>
               <td>{feedback.feeling}</td>
               <td>{feedback.understanding}</td>
@@ -64,6 +79,7 @@ function AdminPage() {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

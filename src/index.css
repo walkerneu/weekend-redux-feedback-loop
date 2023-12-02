@@ -5,5 +5,17 @@ body {
 }
 
 table * {
-  border: solid 1px black
+  border: solid 1px black;
+}
+
+.admin-box {
+  border: solid 1px black;
+  display: flex;
+  justify-content: center;
+}
+.flag-button {
+  background-color: black;
+}
+.review-flag {
+  background-color: rgb(220, 77, 77)
 }

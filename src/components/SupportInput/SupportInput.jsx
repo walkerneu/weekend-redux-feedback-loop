@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function SupportInput() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [supportInput, setSupportInput] = useState('');
+  const support = useSelector(store => store.support)
+  const [supportInput, setSupportInput] = useState(support);
 
   const handleInput = (e) => {
     setSupportInput(e.target.value);

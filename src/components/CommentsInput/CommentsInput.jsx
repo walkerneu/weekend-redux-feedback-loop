@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function CommentsInput() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [commentsInput, setCommentsInput] = useState("");
+  const comments = useSelector(store => store.comments)
+  const [commentsInput, setCommentsInput] = useState(comments);
 
   const handleInput = (e) => {
     setCommentsInput(e.target.value);

@@ -48,7 +48,6 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    console.log(req.params.id)
     const sqlText = `
         UPDATE "feedback"
             SET "flagged" = true

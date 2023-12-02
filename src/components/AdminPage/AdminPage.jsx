@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import FeedbackItem from "../FeedbackItem/FeedbackItem";
 
 function AdminPage() {
   const allFeedback = useSelector((store) => store.allFeedback);
@@ -28,30 +28,6 @@ function AdminPage() {
     getAllFeedback();
   }, []);
 
-  const deleteFeedback = (incId) => {
-    axios({
-        method: 'DELETE',
-        url: `/feedback/${incId}`
-      }).then(function (response) {
-        getAllFeedback();
-    
-      }).catch(function (error) {
-        console.log('error in DELETE', error);
-      });
-  }
-
-  const flagForReview = (incId) => {
-    axios({
-        method: 'PUT',
-        url: `/feedback/${incId}`
-      }).then(function (response) {
-        getAllFeedback();
-    
-      }).catch(function (error) {
-        console.log('error in PUT, my dood', error);
-      });
-  }
-
   return (
     <div>
         <h2>Feedback Results!</h2>
@@ -71,20 +47,10 @@ function AdminPage() {
         </thead>
         <tbody>
           {allFeedback.map((feedback) => (
-            <tr key={feedback.id}
-                className={ feedback.flagged ? "review-flag" : ""}>
-              <td><button 
-                className="flag-button" 
-                onClick={() => flagForReview(feedback.id)}>🏳️</button></td>
-              <td>{new Date(feedback.date).toDateString("en-us")}</td>
-              <td>{feedback.feeling}</td>
-              <td>{feedback.understanding}</td>
-              <td>{feedback.support}</td>
-              <td>{feedback.comments}</td>
-              <td>
-                <button onClick={() => deleteFeedback(feedback.id)}>DELETE</button>
-              </td>
-            </tr>
+            <FeedbackItem
+                key={feedback.id} 
+                feedback={feedback}
+                getAllFeedback={getAllFeedback}/>
           ))}
         </tbody>
       </table>

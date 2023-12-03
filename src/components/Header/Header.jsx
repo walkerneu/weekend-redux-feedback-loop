@@ -25,18 +25,22 @@ function Header() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-          ></IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Don't forget it!
+            onClick={homeLink}>
+            <img 
+              src='/images/dont-forget.png'
+              height="100"
+              width="100"></img>
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>           
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            FEEDBACK!!
+            <img 
+              src='/images/feedback.png'
+              height="125"
+              width="165"></img>
           </Typography>
           <Button color="inherit" onClick={adminLink}>
             Admin
-          </Button>
-          <Button color="inherit" onClick={homeLink}>
-            Home
           </Button>
         </Toolbar>
       </AppBar>

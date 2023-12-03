@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
 import { Box } from "@mui/material";
+import Swal from 'sweetalert2'
 
 function FeelingsInput() {
   const history = useHistory();
@@ -20,7 +21,12 @@ function FeelingsInput() {
   };
   const submitFeeling = () => {
     if (feelingsInput > 5 || feelingsInput < 1) {
-      alert("You need to enter a number between 1 and 5!");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You need to enter a rating!",
+            footer: 'Please select a score from 1 to 5'
+          });
     } else {
       dispatch({
         type: "SET_FEELINGS",

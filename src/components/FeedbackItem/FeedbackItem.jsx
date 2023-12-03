@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
+import Swal from 'sweetalert2'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -19,15 +20,32 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function FeedbackItem({ feedback, getAllFeedback }) {
   const deleteFeedback = (incId) => {
-    axios({
-      method: "DELETE",
-      url: `/feedback/${incId}`,
-    })
-      .then(function (response) {
-        getAllFeedback();
-      })
-      .catch(function (error) {
-        console.log("error in DELETE", error);
+    Swal.fire({
+        title: "Are you sure?",
+        text: "This will delete the feedback permanently!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "The feedback was deleted.",
+            icon: "success"
+          });
+          axios({
+            method: "DELETE",
+            url: `/feedback/${incId}`,
+          })
+            .then(function (response) {
+              getAllFeedback();
+            })
+            .catch(function (error) {
+              console.log("error in DELETE", error);
+            });
+        }
       });
   };
 

@@ -12,7 +12,7 @@ import { Box } from "@mui/material";
 function FeelingsInput() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const feelings = useSelector((store) => store.feelings);
+  const feelings = useSelector((store) => Number(store.feelings));
   const [feelingsInput, setFeelingsInput] = useState(feelings);
 
   const handleInput = (e) => {

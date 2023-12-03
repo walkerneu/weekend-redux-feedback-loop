@@ -1,7 +1,7 @@
 import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-const feelings = (state = '', action) => {
+const feelings = (state = 0, action) => {
   if (action.type === "SET_FEELINGS"){
     return action.payload
   }
@@ -10,7 +10,7 @@ const feelings = (state = '', action) => {
   }
   return state;
 }
-const understanding = (state = '', action) => {
+const understanding = (state = 0, action) => {
   if (action.type === "SET_UNDERSTANDING") {
     return action.payload;
   }
@@ -19,7 +19,7 @@ const understanding = (state = '', action) => {
   }
   return state;
 };
-const support = (state = '', action) => {
+const support = (state = 0, action) => {
   if (action.type === "SET_SUPPORT") {
     return action.payload;
   }

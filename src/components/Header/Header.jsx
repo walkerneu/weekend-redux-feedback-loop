@@ -30,7 +30,10 @@ function Header(){
             
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            FEEDBACK
+            Don't forget it!
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            FEEDBACK!!
           </Typography>
           <Button 
             color="inherit"

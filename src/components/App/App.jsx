@@ -16,9 +16,9 @@ import Header from '../Header/Header';
 function App() {
 
   return (
-    <div className='App'>
       <Router>
         <Header />
+        <div className='App'>
         <Route exact path='/'>
           <FeelingsInput />
         </Route>
@@ -40,8 +40,8 @@ function App() {
         <Route exact path='/admin'>
           <AdminPage />
         </Route>
+        </div>
       </Router>
-    </div>
   );
 }
 

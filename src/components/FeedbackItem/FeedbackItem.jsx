@@ -1,10 +1,8 @@
 import axios from "axios";
 import { styled } from "@mui/material/styles";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import { Button } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -51,12 +49,13 @@ function FeedbackItem({ feedback, getAllFeedback }) {
   return (
     <StyledTableRow className={feedback.flagged ? "review-flag" : ""}>
       <StyledTableCell align="right">
-        <button
+        <Button
+          size="small"
           className="flag-button"
           onClick={() => flagForReview(feedback.id)}
         >
           🏳️
-        </button>
+        </Button>
       </StyledTableCell>
       <StyledTableCell align="right">
         {new Date(feedback.date).toDateString("en-us")}
@@ -66,7 +65,9 @@ function FeedbackItem({ feedback, getAllFeedback }) {
       <StyledTableCell align="right">{feedback.support}</StyledTableCell>
       <StyledTableCell align="right">{feedback.comments}</StyledTableCell>
       <StyledTableCell align="right">
-        <button onClick={() => deleteFeedback(feedback.id)}>DELETE</button>
+        <Button size="small" onClick={() => deleteFeedback(feedback.id)}>
+          DELETE
+        </Button>
       </StyledTableCell>
     </StyledTableRow>
   );

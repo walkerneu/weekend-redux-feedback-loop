@@ -50,7 +50,7 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     const sqlText = `
         UPDATE "feedback"
-            SET "flagged" = true
+            SET "flagged" = NOT "flagged"
             WHERE "id" = $1;`
     pool.query(sqlText, [req.params.id])
       .then((result) => {

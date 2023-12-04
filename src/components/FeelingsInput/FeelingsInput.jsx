@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
 import { Box } from "@mui/material";
 import Swal from 'sweetalert2'
+import { CardActionArea } from "@mui/material";
 
 function FeelingsInput() {
   const history = useHistory();
@@ -60,12 +61,14 @@ function FeelingsInput() {
             On a scale of 1 to 5
           </Typography>
           <Typography component="legend">Feeling?</Typography>
+          <CardActionArea>
           <Rating
             name="simple-controlled"
             value={feelingsInput}
             onChange={handleInput}
             data-testid="input"
           />
+          </CardActionArea>
         </CardContent>
         <CardActions>
           <Button
